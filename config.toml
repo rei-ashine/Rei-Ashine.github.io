@@ -1,3 +1,55 @@
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = "https://Rei-Ashine.github.io"
+languageCode = "en-us"
+title = "Rei ASHINE"
+theme = "m10c"
+
+[params]
+		author = "Rei ASHINE"
+		description = "The book called Life doesn't have the answers written at the back."
+		avatar = "https://avatars.githubusercontent.com/u/52484735?v=4"
+		menu_item_separator = "|"
+		favicon = "https://avatars.githubusercontent.com/u/52484735?v=4"
+
+		[[params.social]]
+		icon = "github"
+		name = "Github"
+		url = "https://github.com/Rei-Ashine"
+
+		[[params.social]]
+		icon = "twitter"
+		name = "Twitter"
+		url = "https://twitter.com"
+
+		[[params.social]]
+    icon = "linkedin"
+    name = "LinkedIn"
+		url = "https://www.linkedin.com/in/Rei-Ashine"
+
+		[params.style]
+		# https://www.colordic.org/w
+		# Sidebar background color (白花色)
+		darkestColor = "#e8ecef"
+		# Main background color (白)
+		darkColor = "#ffffff"
+		# Theme color (山吹色)
+		primaryColor = "#f8b500"
+		# Font color for the title (褐返)
+		lightestColor = "#203744"
+		# Font color for the body (漆黒)
+		lightColor = "#0d0015"
+
+[[menu.main]]
+identifier = "home"
+name = "Home"
+url = "/"
+
+[[menu.main]]
+identifier = "posts"
+name = "Posts"
+url = "/posts/"
+
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+
