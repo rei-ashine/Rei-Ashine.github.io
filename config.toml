@@ -5,10 +5,10 @@ theme = "m10c"
 
 [params]
 		author = "Rei ASHINE"
-		description = "The book called Life doesn't have the answers written at the back."
-		avatar = "https://avatars.githubusercontent.com/u/52484735?v=4"
+		description = "The book called Life doesn't have the answers written at the back. Personal website and portfolio of Rei Ashine."
+		avatar = "/images/avatar.png"
 		menu_item_separator = "|"
-		favicon = "https://avatars.githubusercontent.com/u/52484735?v=4"
+		favicon = "/images/avatar.png"
 
 		[[params.social]]
 		icon = "github"
@@ -16,14 +16,12 @@ theme = "m10c"
 		url = "https://github.com/Rei-Ashine"
 
 		[[params.social]]
-		icon = "twitter"
-		name = "Twitter"
-		url = "https://twitter.com"
-
-		[[params.social]]
     icon = "linkedin"
     name = "LinkedIn"
 		url = "https://www.linkedin.com/in/Rei-Ashine"
+
+		# [params.analytics]
+		# googleAnalytics = "G-XXXXXXXXXX" # トラッキングIDを取得したらコメントアウトを外して入力してください
 
 		[params.style]
 		# https://www.colordic.org/w

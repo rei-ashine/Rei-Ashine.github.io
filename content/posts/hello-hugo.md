@@ -2,7 +2,7 @@
 title: "Hello Hugo"
 date: 2024-05-26T10:28:08+09:00
 tags: ["Hugo"]
-draft: false
+draft: true
 ---
 
 ## Introduction
