@@ -5,7 +5,7 @@ theme = "m10c"
 
 [params]
 		author = "Rei ASHINE"
-		description = "The book called Life doesn't have the answers written at the back. Personal website and portfolio of Rei Ashine."
+		description = "The book called Life doesn't have the answers written at the back."
 		avatar = "/images/avatar.png"
 		menu_item_separator = "|"
 		favicon = "/images/avatar.png"
@@ -13,7 +13,12 @@ theme = "m10c"
 		[[params.social]]
 		icon = "github"
 		name = "Github"
-		url = "https://github.com/Rei-Ashine"
+		url = "https://github.com/rei-ashine"
+
+		[[params.social]]
+		icon = "twitter"
+		name = "Twitter"
+		url = "https://x.com"
 
 		[[params.social]]
     icon = "linkedin"
