@@ -5,7 +5,7 @@ theme = "m10c"
 
 [params]
 		author = "Rei ASHINE"
-		description = "The book called Life doesn't have the answers written at the back."
+		description = "\"The book called Life doesn't have the answers written at the back.\""
 		avatar = "/images/avatar.png"
 		menu_item_separator = "|"
 		favicon = "/images/avatar.png"
@@ -25,8 +25,9 @@ theme = "m10c"
     name = "LinkedIn"
 		url = "https://www.linkedin.com/in/Rei-Ashine"
 
-		# [params.analytics]
-		# googleAnalytics = "G-XXXXXXXXXX" # トラッキングIDを取得したらコメントアウトを外して入力してください
+		[params.analytics]
+		gtm_id = "GTM-N348LCHN"
+		# googleAnalytics = "G-XXXXXXXXXX" # GTMを使用するためこちらはコメントアウトのままにします
 
 		[params.style]
 		# https://www.colordic.org/w
