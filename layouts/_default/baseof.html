@@ -32,6 +32,13 @@
     {{ template "_internal/twitter_cards.html" . }}
     {{ template "_internal/opengraph.html" . }}
 
+    <style>
+      /* iOS Safariの横向き画面での勝手なフォントサイズ拡大を防止 */
+      html, body {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+    </style>
   </head>
   <body>
     {{- with .Site.Params.analytics.gtm_id }}
@@ -53,7 +60,7 @@
         {{- end }}
       </nav>
       {{- end }}
-      <p>{{ .Site.Params.description | default "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium." }}</p>
+      <p{{ if .IsHome }} class="decrypted-text"{{ end }}>{{ .Site.Params.description | default "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium." }}</p>
       {{- with .Site.Params.social }}
       <div class="app-header-social">
         {{ range . }}
@@ -76,5 +83,6 @@
         {{ .Content }}
       {{ end }}
     </main>
+    <script src="{{ "js/custom.js" | relURL }}" defer></script>
   </body>
 </html>
