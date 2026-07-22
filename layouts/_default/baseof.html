@@ -19,6 +19,7 @@
     <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}" />
     {{- template "_internal/opengraph.html" . -}}
     {{- template "_internal/twitter_cards.html" . -}}
+    <link rel="canonical" href="{{ .Permalink }}" />
     {{ $style := resources.Get "css/main.scss" | resources.ExecuteAsTemplate "css/main.scss" . | toCSS | minify | fingerprint -}}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
     <!-- Google Fonts -->
@@ -28,9 +29,6 @@
     <!-- Syntax Highlight -->
     <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/syntax.css" />
 
-    {{ template "_internal/google_analytics.html" . }}
-    {{ template "_internal/twitter_cards.html" . }}
-    {{ template "_internal/opengraph.html" . }}
 
     <style>
       /* iOS Safariの横向き画面での勝手なフォントサイズ拡大を防止 */
