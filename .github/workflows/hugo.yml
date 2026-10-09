@@ -21,6 +21,10 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+# Keep in sync with HUGO_VERSION in build.yml
+env:
+  HUGO_VERSION: 0.165.0
+
 # Default to bash
 defaults:
   run:
@@ -39,7 +43,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
+          hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
       - name: Setup Pages
