@@ -1,12 +1,13 @@
-# Builds the Hugo site on every pull request and push to main; deploys to GitHub Pages only from main.
-name: Deploy Hugo site to Pages
+# Builds the Hugo site on every pull request, push to main and manual run.
+# Only runs on main deploy to GitHub Pages; every other run builds and uploads the same artifact without deploying.
+name: Build and deploy Hugo site
 
 on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
 
-  # Builds (without deploying) pull requests so template errors are caught before merge
+  # Builds pull requests so template errors are caught before merge
   pull_request:
     branches: ["main"]
 
@@ -16,12 +17,12 @@ on:
 # Grant no permissions by default; each job requests only what it needs
 permissions: {}
 
-# Pull request builds cancel superseded runs. Deployments share a single "pages" group:
-# runs queued between the in-progress run and the latest are skipped, but an in-progress
-# production deployment is never cancelled.
+# Runs on main share a single "pages" group: runs queued between the in-progress run and the latest
+# are skipped, but an in-progress production deployment is never cancelled. Other refs cancel
+# superseded runs.
 concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('build-{0}', github.event.pull_request.number) || 'pages' }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  group: ${{ github.ref == 'refs/heads/main' && 'pages' || format('build-{0}', github.ref) }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 env:
   HUGO_VERSION: 0.165.0
@@ -32,13 +33,11 @@ defaults:
     shell: bash
 
 jobs:
-  # Build job
+  # Build job: identical on every event; the site URL comes from baseURL in config.toml
   build:
     runs-on: ubuntu-latest
-    # pages: read lets actions/configure-pages look up the Pages site
     permissions:
       contents: read
-      pages: read
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -52,28 +51,20 @@ jobs:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
-      - name: Setup Pages
-        id: pages
-        if: github.event_name != 'pull_request'
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
-
-      # On pull requests BASE_URL is empty and the baseURL from config.toml is used
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
-          BASE_URL: ${{ steps.pages.outputs.base_url }}
-        run: hugo --minify ${BASE_URL:+--baseURL "${BASE_URL}/"}
+        run: hugo --minify
 
       - name: Upload artifact
-        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: ./public
 
-  # Deployment job
+  # Deployment job: main only, so manual runs on other branches never publish
   deploy:
-    if: github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
