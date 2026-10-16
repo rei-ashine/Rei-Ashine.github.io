@@ -8,3 +8,15 @@ body {
 .list-intro {
   margin-bottom: 2rem;
 }
+
+// Phones and tablets: the home page header fills the first screen,
+// and the content starts below it once the visitor scrolls.
+// 940px matches the theme's breakpoint for the fixed sidebar layout.
+@media (max-width: 939.98px) {
+  .app-header-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100dvh;
+  }
+}
