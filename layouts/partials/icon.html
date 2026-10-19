@@ -1,8 +1,6 @@
-{{- if isset hugo.Data.m10c.icons .name -}}
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-{{ .name }}">
-  <title>{{ .title | default .name }}</title>
-  {{ safeHTML (index hugo.Data.m10c.icons .name) }}
-</svg>
+{{- with index hugo.Data.m10c.icons .name -}}
+  {{- /* The theme's icon data is a complete <svg>; only swap in the display title (e.g. "Github" for "github") */}}
+  {{- replace . (printf "<title>%s</title>" $.name) (printf "<title>%s</title>" ($.title | default $.name | htmlEscape)) | safeHTML -}}
 {{- else -}}
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
   <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
