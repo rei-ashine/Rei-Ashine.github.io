@@ -9,13 +9,14 @@ body {
   margin-bottom: 2rem;
 }
 
-// Phones and tablets: the home page header fills the first screen,
-// and the content starts below it once the visitor scrolls.
+// Phones and tablets: on every page the header fills the first screen, and the
+// content starts below it once the visitor scrolls, so the profile sits in the
+// same place when moving between pages.
 // 940px matches the theme's breakpoint for the fixed sidebar layout.
 // svh (toolbars expanded) matches the screen on first load and, unlike dvh,
 // does not change while scrolling, so the content below never shifts.
 @media (max-width: 939.98px) {
-  .app-header-home {
+  .app-header {
     display: flex;
     flex-direction: column;
     justify-content: center;
