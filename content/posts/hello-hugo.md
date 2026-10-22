@@ -1,6 +1,7 @@
 ---
 title: "Hello Hugo"
 date: 2024-05-26T10:28:08+09:00
+description: "A first post on this Hugo site, showing Markdown formatting and a syntax-highlighted Go example."
 tags: ["Hugo"]
 draft: false
 ---
