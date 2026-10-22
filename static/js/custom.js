@@ -130,6 +130,15 @@ class DecryptedText {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Keep the copyright range current between site rebuilds
+  const currentYear = new Date().getFullYear();
+  document.querySelectorAll(".copyright-year-end").forEach((el) => {
+    if (currentYear > Number(el.dataset.start)) el.textContent = "-" + currentYear;
+  });
+
+  // Leave the text static for visitors who ask the OS for reduced motion
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
   const elements = document.querySelectorAll(".decrypted-text");
   
   elements.forEach((el) => {
