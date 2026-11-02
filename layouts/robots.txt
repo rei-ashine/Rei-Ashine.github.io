@@ -1,4 +1,18 @@
+# Search engines and other crawlers: allowed
 User-agent: *
 Disallow:
+
+# Opt out of AI model training. These tokens cover training only; search
+# crawlers (Googlebot, Bingbot, OAI-SearchBot, Claude-SearchBot) are separate
+# and stay allowed by the group above.
+User-agent: Google-Extended
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: CCBot
+User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
+User-agent: Bytespider
+Disallow: /
 
 Sitemap: {{ "sitemap.xml" | absURL }}
