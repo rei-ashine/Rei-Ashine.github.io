@@ -16,3 +16,5 @@ User-agent: Bytespider
 Disallow: /
 
 Sitemap: {{ "sitemap.xml" | absURL }}
+# Project sites served under this domain from their own repositories
+Sitemap: https://rei-ashine.github.io/ds-app/sitemap.xml
